@@ -81,10 +81,10 @@ class Application extends BaseApplication
             // you might want to disable this cache in case your routing is extremely simple
             ->add(new RoutingMiddleware($this, '_cake_routes_'))
 
-            // Add csrf middleware.
+            /* Add csrf middleware.
             ->add(new CsrfProtectionMiddleware([
                 'httpOnly' => true
-            ]));
+            ]))*/;
 
         return $middlewareQueue;
     }
