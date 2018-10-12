@@ -50,13 +50,21 @@ class AppController extends Controller
         $this->set('styles', $this->styles);
     }
     public function addFormsClass(){
-        array_push($this->styles, '/js/jquery-tags-input/jquery.tagsinput.css', '/css/bootstrap-fileupload.min.css', '/js/jquery-multi-select/css/multi-select.css');
-        array_push($this->scripts, '/js/ios-switch/switchery.js', '/js/ios-switch/ios-init.js','/js/jquery-multi-select/js/jquery.multi-select.js', '/js/jquery-multi-select/js/jquery.quicksearch.js', '/js/fuelux/js/spinner.min.js', '/js/spinner-init.js', '/js/bootstrap-fileupload.min.js', '/js/jquery-tags-input/jquery.tagsinput.js', '/js/tagsinput-init.js', '/js/bootstrap-inputmask/bootstrap-inputmask.min.js');
+        array_push($this->styles, '/css/bootstrap-fileupload.min.css', '/js/jquery-multi-select/css/multi-select.css', '/js/ios-switch/switchery.css');
+        array_push($this->scripts, '/js/ios-switch/switchery.js', '/js/ios-switch/ios-init.js','/js/jquery-multi-select/js/jquery.multi-select.js', '/js/jquery-multi-select/js/jquery.quicksearch.js', '/js/fuelux/js/spinner.min.js', '/js/spinner-init.js', '/js/bootstrap-fileupload.min.js', '/js/bootstrap-inputmask/bootstrap-inputmask.min.js');
         $this->set('scripts', $this->scripts);
         $this->set('styles', $this->styles);
     }
     public function corrigeNum($num){
         return str_replace(',', '.', $num);
+    }
+    public function configTel($tel){
+        $ddd; $telefone;
+        preg_match("/^\([0-9]{2}\)/", $tel, $ddd);
+        $telefone = str_replace($ddd[0], "", $tel);
+        $telefone = str_replace("-", "", $telefone);
+        $ddd = preg_replace("/[)(]/", "", $ddd[0]);
+        return array($ddd, $telefone);
     }
     public function start_session(){
         if (session_status() == PHP_SESSION_NONE) {
@@ -182,5 +190,19 @@ class AppController extends Controller
         ->fetchAll('assoc');
 
         return $res[0]['time'];
+    }
+    public function getThisJsonData($pagina){
+        $url = $this->getLink($pagina);
+        
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_URL,$url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS,"retorno=json");
+        $res=curl_exec($ch);
+        curl_close($ch);
+
+        return json_decode($res, true);
     }
 }
