@@ -50,6 +50,8 @@ class ClientesController extends AppController
             ->execute()
             ->fetchAll('assoc');
 
+            $telefone = $this->addTelFormatado($telefone);
+
             $clientesObj[$key]['telefones'] = $telefone;
             
             $empresa = $this->connection->newQuery()
@@ -172,13 +174,125 @@ class ClientesController extends AppController
             $cliente = $this->request->getData('cliente');
             $end = $this->request->getData('end');
             if (!empty($pessoa) && !empty($cliente) && !empty($end)){
+                $res = $this->connection->newQuery()
+                ->select("pessoa_id")
+                ->from("usuarios")
+                ->where("id = " . $id)
+                ->execute()
+                ->fetchAll("assoc");
 
+                $pessoa_id = $res[0]["pessoa_id"];
+
+                $arrayPessoa = array(
+                    'nome' => $pessoa['nome'],
+                    'sobrenome' => $pessoa['sobrenome'],
+                    'tipo' => $pessoa['tipo'],
+                    'ip_cadastro' => $this->userIP()
+                );
+                $res = $this->connection->update('pessoas', $arrayPessoa, array("id" => $pessoa_id));
+
+                if (!empty($pessoa['cnpj'])){
+                    $res = $this->connection->newQuery()
+                    ->select("*")
+                    ->from("empresas")
+                    ->where("pessoa_id = ".$pessoa_id)
+                    ->execute()
+                    ->fetchAll("assoc");
+
+                    $arrayEmpresa = array(
+                        'cnpj' => $pessoa['cnpj']            
+                    );
+                    if (!empty($pessoa['ie'])){
+                        $arrayEmpresa['ie'] = $pessoa['ie'];
+                    }
+
+                    if (count($res)){
+                        $res = $this->connection->update('empresas', $arrayEmpresa, array("pessoa_id" => $pessoa_id));
+                    }
+                    else{
+                        $arrayEmpresa["pessoa_id"] = $pessoa_id;
+                        $res = $this->connection->insert('empresas', $arrayEmpresa);
+                    }
+                }
+
+                $arrayEmail = array(
+                    'email' => $cliente['email'],
+                    'ip_atualizado' => $this->userIP()
+                );
+                $this->connection->update('emails', $arrayEmail, array("pessoa_id" => $pessoa_id));
+
+                if (!empty($cliente['telefone'])){
+                    $res = $this->connection->newQuery()
+                    ->select("*")
+                    ->from("empresas")
+                    ->where("pessoa_id = ".$pessoa_id)
+                    ->execute()
+                    ->fetchAll("assoc");
+
+                    $tele = $this->configTel($cliente['telefone']);
+                    $arrayTel = array(
+                        'ddd' => $tele[0],
+                        'numero' => $tele[1],
+                        'ip_atualizado' => $this->userIP()
+                    );
+
+                    if (count($res)){
+                        $this->connection->update('telefones', $arrayTel, array("pessoa_id" => $pessoa_id));
+                    }
+                    else{
+                        $arrayTel["pessoa_id"] = $pessoa_id;
+                        $this->connection->insert('telefones', $arrayTel);
+                    }
+
+                    if (!empty($end['cidade']) && !empty($end['uf'])){
+                        $res = $this->connection->newQuery()
+                        ->select("*")
+                        ->from("enderecos")
+                        ->where("pessoa_id = ".$pessoa_id)
+                        ->execute()
+                        ->fetchAll("assoc");
+
+                        $arrayEnd = array(
+                            'cep' => $end['cep'],
+                            'logradouro' => $end['logradouro'],
+                            'numero' => $end['numero'],
+                            'complemento' => $end['complemento'],
+                            'bairro' => $end['bairro'],
+                            'cidade' => $end['cidade'],
+                            'uf' => $end['uf'],
+                            'ip_atualizado' => $this->userIP()
+                        );
+                        if (count($res)){
+                            $this->connection->update('enderecos', $arrayEnd, array("pessoa_id" => $pessoa_id));
+                        }
+                        else{
+                            $arrayEnd["pessoa_id"] = $pessoa_id;
+                            $this->connection->insert('enderecos', $arrayEnd);
+                        }
+                    }
+                    /*$arrayUser = array(
+                        'login' => $cliente['login'],
+                        'senha' => md5($cliente['senha']),
+                        'ip_atualizado' => $this->userIP()
+                    );
+                    $this->connection->update('usuarios', $arrayUser, array('pessoa_id' => $pessoa_id));*/
+            
+                    if ($this->retorno == 'json'){
+                        echo json_encode(array('cliente_id' => $id));
+                        exit;
+                    }
+                    else{
+                        $this->redireciona('clientes');
+                    }
+                }
             }
             else{
                 $this->set('cliente', $this->getThisJsonData('clientes?id='.$id)[0]);
             }
-            $this->pageTitle = "Editar Cliente ID " + $id;
+            $this->pageTitle = "Editar Cliente ID " . $id;
             $this->set('title', $this->pageTitle);
+
+            $this->addFormsClass();
         }
         else{
             $this->redireciona('clientes');

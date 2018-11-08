@@ -152,7 +152,7 @@
                     <div class="row">
                         <div class="col-md-12 form-group">
                             <div class="col-sm-12 text-right">
-                                <a href="<?= $this->Layout->getLink("tarefas") ?>"><button type="button" class="btn btn-default">Cancelar</button></a>
+                                <a href="<?= $this->Layout->getLink("clientes") ?>"><button type="button" class="btn btn-default">Cancelar</button></a>
                                 <button type="submit" class="btn btn-primary">Cadastrar</button>
                             </div>
                         </div>

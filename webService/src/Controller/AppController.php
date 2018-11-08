@@ -49,6 +49,16 @@ class AppController extends Controller
         $this->set('scripts', $this->scripts);
         $this->set('styles', $this->styles);
     }
+    public function addTelFormatado($data){
+        foreach($data as $key => $dt){
+            $n1 = substr($dt['numero'], 0, 4);
+            $n2 = substr($dt['numero'], 4);
+            $tel = "(" . $dt['ddd'] . ")" . $n1 . "-" . $n2;
+
+            $data[$key]["telFormatado"] = $tel;
+        }
+        return $data;
+    }
     public function addFormsClass(){
         array_push($this->styles, '/css/bootstrap-fileupload.min.css', '/js/jquery-multi-select/css/multi-select.css', '/js/ios-switch/switchery.css');
         array_push($this->scripts, '/js/ios-switch/switchery.js', '/js/ios-switch/ios-init.js','/js/jquery-multi-select/js/jquery.multi-select.js', '/js/jquery-multi-select/js/jquery.quicksearch.js', '/js/fuelux/js/spinner.min.js', '/js/spinner-init.js', '/js/bootstrap-fileupload.min.js', '/js/bootstrap-inputmask/bootstrap-inputmask.min.js');
