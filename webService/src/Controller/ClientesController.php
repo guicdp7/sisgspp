@@ -174,14 +174,7 @@ class ClientesController extends AppController
             $cliente = $this->request->getData('cliente');
             $end = $this->request->getData('end');
             if (!empty($pessoa) && !empty($cliente) && !empty($end)){
-                $res = $this->connection->newQuery()
-                ->select("pessoa_id")
-                ->from("usuarios")
-                ->where("id = " . $id)
-                ->execute()
-                ->fetchAll("assoc");
-
-                $pessoa_id = $res[0]["pessoa_id"];
+                $pessoa_id = $this->getPessoaId("usuarios", $id);
 
                 $arrayPessoa = array(
                     'nome' => $pessoa['nome'],
@@ -297,5 +290,59 @@ class ClientesController extends AppController
         else{
             $this->redireciona('clientes');
         }
+    }
+    public function desativar(){
+        $id = $this->request->getQuery("id");
+
+        if (!empty($id)){
+            $this->connection->update("usuarios", array("status"=>0), array("id"=>$id));
+        }
+        $this->redireciona('clientes');
+    }
+    public function ativar(){
+        $id = $this->request->getQuery("id");
+
+        if (!empty($id)){
+            $this->connection->update("usuarios", array("status"=>1), array("id"=>$id));
+        }
+        $this->redireciona('clientes');
+    }
+    public function excluir(){
+        $id = $this->request->getQuery("id");
+
+        if (!empty($id)){
+            $pessoa_id = $this->getPessoaId("usuarios", $id);
+
+            $res = $this->connection->newQuery()
+            ->select("id")
+            ->from("projetos")
+            ->where("empresa_id = ".$pessoa_id)
+            ->execute()
+            ->fetchAll("assoc");
+
+            if (!count($res)){
+                $res = $this->connection->newQuery()
+                ->select("pessoa_id")
+                ->from("usuarios_empresa")
+                ->where("empresa_id = ".$pessoa_id)
+                ->execute()
+                ->fetchAll("assoc");
+
+                foreach ($res as $re){
+                    $this->connection->delete("pessoas", array("id"=>$re['pessoa_id']));
+                }
+                
+                $this->connection->delete("pessoas", array("id"=>$pessoa_id));
+            }
+            else{
+                $this->errors['msg'] = "O Cliente Possui Projetos!";
+                $this->setSessaoErro();
+            }
+            if ($this->retorno == 'json'){
+                echo json_encode(['error' => $this->errors]);
+                exit;
+            }
+        }
+        $this->redireciona('clientes');
     }
 }

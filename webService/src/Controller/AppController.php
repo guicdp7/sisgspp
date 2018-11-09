@@ -40,8 +40,21 @@ class AppController extends Controller
          */
         //$this->loadComponent('Security');
 
+        $this->getSessaoErro();
         $this->set('scripts', $this->scripts);
         $this->set('styles', $this->styles);
+    }
+    public function setSessaoErro(){
+        $this->start_session();
+        $_SESSION["errors"] = json_encode($this->errors);
+    }
+    public function getSessaoErro(){
+        $this->start_session();
+        if (isset($_SESSION["errors"])) {
+            $this->errors = json_decode($_SESSION["errors"]);
+            unset($_SESSION["errors"]);
+            $this->set("errors", $this->errors);
+        }
     }
     public function addTableClass(){
         array_push($this->styles, '/js/advanced-datatable/css/demo_page.css', '/js/advanced-datatable/css/demo_table.css', '/js/data-tables/DT_bootstrap.css');
@@ -75,6 +88,17 @@ class AppController extends Controller
         $telefone = str_replace("-", "", $telefone);
         $ddd = preg_replace("/[)(]/", "", $ddd[0]);
         return array($ddd, $telefone);
+    }
+    public function getPessoaId($tab, $id){
+        $res = $this->connection->newQuery()
+        ->select("pessoa_id")
+        ->from($tab)
+        ->where("id = ".$id)
+        ->execute()
+        ->fetchAll("assoc");
+
+        return $res[0]["pessoa_id"];
+
     }
     public function start_session(){
         if (session_status() == PHP_SESSION_NONE) {

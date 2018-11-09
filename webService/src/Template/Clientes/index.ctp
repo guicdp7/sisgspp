@@ -34,7 +34,7 @@
                                     else{ ?>
                                         <b>Ativo</b> [<a href="#" onclick="if (confirm('Desativar Cliente <?= $pessoa['nome'] ?>?')) { location.href='<?= $this->Layout->getLink('clientes/desativar?id='.$cliente['id']) ?>'; }">Desativar</a>]
                                     <?php } ?></td>
-                                <td class="hidden-phone"><a href="<?= $this->Layout->getLink('clientes/editar?id='.$cliente['id']) ?>">Editar</a></td>
+                                <td class="hidden-phone"><a href="<?= $this->Layout->getLink('clientes/editar?id='.$cliente['id']) ?>">Editar</a> <a href="#" onclick="if (confirm('Excluir <?= $pessoa['nome'] ?>?')){ location.href='<?= $this->Layout->getLink('clientes/excluir?id='.$cliente['id']) ?>'; }">Excluir</a></td>
                             </tr>
                             <?php endforeach; endif; ?>
                         </tbody>

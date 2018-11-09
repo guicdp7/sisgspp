@@ -119,14 +119,14 @@
             </ul>
         </div>
         <div class="wrapper">
-            <?php if (isset($msgErro)){ ?>
+            <?php if (isset($errors)){ ?>
             <div class="row">
                 <div class="col-md-12">
                     <div class="alert alert-danger">
                         <button type="button" class="close close-sm" data-dismiss="alert">
                             <i class="fa fa-times"></i>
                         </button>
-                        <?php foreach($msgErro as $msge) { echo $msge."<br/>"; } ?>
+                        <?php foreach($errors as $error) { echo $error."<br/>"; } ?>
                     </div>
                 </div>
             </div>
