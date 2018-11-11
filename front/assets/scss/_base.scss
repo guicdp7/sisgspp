@@ -1,0 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.bg-cinza-claro {
+  background-color: $cinza-claro;
+}
+.bg-cinza-escuro {
+  background-color: $cinza-escuro;
+}
+.bg-branco {
+  background-color: $branco;
+}
+.bg-azul-escuro {
+  background-color: $azul-escuro;
+}
+.bg-verde {
+  background-color: $verde;
+}
+.bg-ce {
+  background-color: $ice;
+}
+
+
+.text-cinza-claro {
+  color: $cinza-claro;
+}
+.text-cinza-escuro {
+  color: $cinza-escuro;
+}
+.text-branco {
+  color: $branco;
+}
+.text-azul-escuro {
+  color: $azul-escuro;
+}
+.text-verde {
+  color: $verde;
+}
+.text-ice {
+  color: $ice;
+}
+
+.font-light {
+  font-weight: 300;
+}
+.font-regular {
+  font-weight: 400;
+}
+.font-medium {
+  font-weight: 500;
+}
+.font-bold {
+  font-weight: 700;
+}
+.font-black {
+  font-weight: 900;
+}
+
