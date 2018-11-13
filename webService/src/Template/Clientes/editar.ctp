@@ -36,7 +36,7 @@
                             <label class="col-sm-2 control-label m-bot15 label-pessoa-snome" for="tbSNome"><?= $tip == "F" ? "Sobrenome" : "Nome Fantasia *" ?></label>
                             <div class="col-sm-10 m-bot15">
                                 <input type="text" name="pessoa[sobrenome]" id="tbSNome" class="form-control" value="<?= $pessoa["sobrenome"] ?>"/>
-                            </div><?php $empresa = $cliente["empresas"][0]; ?>
+                            </div><?php $empresa = isset($cliente["empresas"][0]) ? $cliente["empresas"][0] : array("cnpj"=>"", "ie"=>""); ?>
                             <label class="col-sm-2 control-label m-bot15 label-pessoa-cpf" for="tbDesc"><?= $tip == "F" ? "CPF" : "CNPJ" ?></label>
                             <div class="col-sm-10 col-md-4 m-bot15">
                                 <input type="text" name="pessoa[cnpj]" id="tbDesc" class="form-control" value="<?= $empresa["cnpj"] ?>"/>
@@ -53,13 +53,13 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12 form-group"><?php $email = $cliente["emails"][0]; ?>
+                        <div class="col-md-12 form-group"><?php $email = isset($cliente["emails"][0]) ? $cliente["emails"][0] : array("email"=>""); ?>
                             <label class="col-sm-2 control-label m-bot15" for="tbEmail">E-mail *</label>
                             <div class="col-sm-10 m-bot15">
                                 <input type="email" name="cliente[email]" id="tbEmail" class="form-control" value="<?= $email["email"] ?>" required/>
                             </div>
                             <label class="col-sm-2 control-label m-bot15" for="tbTel">Telefone</label>
-                            <div class="col-sm-10 m-bot15"><?php $telefone = $cliente["telefones"][0]; ?>
+                            <div class="col-sm-10 m-bot15"><?php $telefone = isset($cliente["telefones"][0]) ? $cliente["telefones"][0] : array("telFormatado"=>""); ?>
                                 <input type="tel" name="cliente[telefone]" id="tbTel" data-mask="(99)9999-9999?9" class="form-control" value="<?= $telefone["telFormatado"] ?>"/>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                             <h4>Endere&ccedil;o</h4>
                         </div>
                     </div>
-                    <div class="row"><?php $endereco = $cliente["enderecos"][0] ?>
+                    <div class="row"><?php $endereco = isset($cliente["enderecos"][0]) ? $cliente["enderecos"][0] : array("cep"=>"", "logradouro"=>"", "numero"=>"", "complemento"=>"", "bairro"=>"", "cidade"=>"", "uf"=>"") ?>
                         <div class="col-md-12 form-group">
                             <label class="col-sm-2 control-label m-bot15" for="tbCep">CEP</label>
                             <div class="col-sm-10 m-bot15">

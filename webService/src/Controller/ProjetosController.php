@@ -88,4 +88,58 @@ class ProjetosController extends AppController
 
         $this->addFormsClass();
     }
+    public function editar(){
+        $id = $this->request->getQuery("id");
+
+        if (!empty($id)){
+            $projeto = $this->request->getData('projeto');
+            
+            $res = $this->connection->newQuery()
+            ->select("pessoas.id, nome, sobrenome, tipo")
+            ->from("usuarios")
+            ->join(
+                [
+                    "table" => "pessoas",
+                    "type" => "LEFT",
+                    "conditions" => "pessoas.id = pessoa_id"
+                ]
+            )
+            ->where("acesso = 0")
+            ->execute()
+            ->fetchAll("assoc");
+
+            $this->set("empresas", $res);
+
+            if (!empty($projeto)){
+
+            }
+            else{
+                $projetoObj = $this->connection->newQuery()
+                ->select("nome, empresa_id")
+                ->from("projetos")
+                ->execute()
+                ->fetchAll("assoc");
+                
+                $this->set("projeto", $projetoObj[0]);
+            }
+
+            $this->pageTitle = "Editar Projeto " . $id;
+            $this->pagRef[1] = "editar projeto";
+            $this->set('title', $this->pageTitle);
+            $this->set('ref', $this->pagRef);
+    
+            $this->addFormsClass();
+        }
+        else{
+            $this->redireciona("projetos");
+        }
+    }
+    public function excluir(){
+        $id = $this->request->getQuery("id");
+
+        if (!empty($id)){
+            $this->connection->delete("projetos", array("id"=>$id));
+        }
+        $this->redireciona("projetos");
+    }
 }
