@@ -16,33 +16,30 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            <label class="col-sm-2 control-label m-t m-bot15" for='seProjeto'>Projeto:</label>
+                            <label class="col-sm-2 control-label m-t m-bot15" for='tbProj'>Projeto:</label>
                             <div class="col-sm-10 m-bot15">
-                                <select id='seProjeto' class="form-control" name='tarefa[projeto_id]'>
-                                    <?php if (count($projetos)) : foreach($projetos as $projeto) : ?>
-                                    <option value="<?= $projeto["id"] ?>"><?= $projeto["nome"] ?></option>
-                                    <?php endforeach; else: ?>
-                                    <option value='0'>Nenhum Projeto Cadastrado</option>
-                                    <?php endif; ?>
-                                </select>
+                                <input id="tbProj" class="form-control" type="text" value="<?= $tarefa["projeto"]["nome"] ?>" readonly/>
                             </div>
-                            <label class="col-sm-2 control-label m-t m-bot15" for='seTarefa'>Tipo de Tarefa:</label>
+                            <label class="col-sm-2 control-label m-t m-bot15" for='tbTarefa'>Tipo de Tarefa:</label>
                             <div class="col-sm-10 m-bot15">
-                                <select id='seTarefa' class="form-control" name='tarefa[tipo_id]'>
-                                    <?php if (count($tipos)) : foreach($tipos as $tipo) : ?>
-                                    <option value="<?= $tipo["id"] ?>"><?= $tipo["nome"] ?></option>
-                                    <?php endforeach; else: ?>
-                                    <option value='0'>Nenhum Tipo de Tarefa Cadastrado</option>
-                                    <?php endif; ?>
+                                <input id="tbTarefa" class="form-control" type="text" value="<?= $tarefa["tipo"]["nome"] ?>" readonly/>
+                            </div>
+                            <label class="col-sm-2 control-label m-t m-bot15" for='seStatus'>Status:</label>
+                            <div class="col-sm-10 m-bot15">
+                                <select id='seStatus' class="form-control" name='tarefa[status]'><?php $st = $tarefa["status"]; $sl = " selected='selected'"; ?>
+                                    <option value="0"<?= $st == 0 ? $sl : "" ?>>Cancelada</option>
+                                    <option value="1"<?= $st == 1 ? $sl : "" ?>>Pendente</option>
+                                    <option value="2"<?= $st == 2 ? $sl : "" ?>>Em Desenvolvimento</option>
+                                    <option value="3"<?= $st == 3 ? $sl : "" ?>>Concluida</option>
                                 </select>
                             </div>
                             <label class="col-sm-2 control-label m-t m-bot15" for="tbDesc">Descrição *</label>
                             <div class="col-sm-10 m-bot15">
-                                <textarea name="tarefa[descricao]" id="tbDesc" class="form-control" required></textarea>
+                                <textarea name="tarefa[descricao]" id="tbDesc" class="form-control" required><?= $tarefa["descricao"] ?></textarea>
                             </div>
                             <label class="col-sm-2 control-label m-t m-bot15" for="tbOcorr">Ocorrências</label>
                             <div class="col-sm-10 m-bot15">
-                                <textarea name="tarefa[ocorrencias]" id="tbOcorr" class="form-control"></textarea>
+                                <textarea name="tarefa[ocorrencias]" id="tbOcorr" class="form-control"><?= $tarefa["ocorrencias"] ?></textarea>
                             </div>
                         </div>
                     </div>
@@ -52,7 +49,7 @@
                         <div class="col-md-12 form-group">
                             <div class="col-sm-12 text-right">
                                 <a href="<?= $this->Layout->getLink("tarefas") ?>"><button type="button" class="btn btn-default">Cancelar</button></a>
-                                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                                <button type="submit" class="btn btn-primary">Editar</button>
                             </div>
                         </div>
                     </div>

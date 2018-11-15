@@ -17,10 +17,17 @@ class ClientesController extends AppController
         $this->set('thisUser', $this->user);
     }
     public function index(){
+        $id = $this->request->getQuery("id");
+
+        $condicao = "acesso = 0";
+        if (!empty($id)){
+            $condicao += " and id = " . $id;
+        }
+
         $clientesObj = $this->connection->newQuery()
         ->select('*')
         ->from('usuarios')
-        ->where('acesso = 0')
+        ->where($condicao)
         ->execute()
         ->fetchAll('assoc');
 
@@ -154,9 +161,7 @@ class ClientesController extends AppController
                 echo json_encode(array('cliente_id' => $pessoa_id));
                 exit;
             }
-            else{
-                $this->redireciona('clientes');
-            }
+            $this->redireciona('clientes');
         }
 
         $this->pageTitle = "Novo Cliente";
