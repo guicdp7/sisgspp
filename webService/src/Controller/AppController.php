@@ -44,6 +44,44 @@ class AppController extends Controller
         $this->set('scripts', $this->scripts);
         $this->set('styles', $this->styles);
     }
+    public function altTarefaStatus($ddsOld, $ddsDep){
+        $id = $ddsOld["id"];
+        $prazo = $ddsOld["prazo"];
+        $ant = $ddsOld["status"];
+        $dep = $ddsDep["status"];
+        $tars = $this->connection->newQuery()
+        ->select("*")
+        ->from("alteracoes")
+        ->where("(status = 1 or status = 2) and id > " . $id)
+        ->execute()
+        ->fetchAll("assoc");
+
+        $cAnt = $ant == 1 || $ant == 2 ? true : false;
+        $cDep = $dep == 1 || $dep == 2 ? true : false;
+
+        if ($cAnt != $cDep){
+            switch ($dep){
+                case 0: case 3:
+                    foreach($tars as $tar){
+                        $resu = $tar["prazo"];
+                        $resu -= $prazo;
+
+
+                        $this->connection->update("alteracoes", array("prazo" => $resu), array("id" => $tar["id"]));
+                    }
+                break;
+                case 1: case 2:
+                foreach($tars as $tar){
+                    $resu = $tar["prazo"];
+                    $resu += $prazo;
+
+                    $this->connection->update("alteracoes", array("prazo" => $resu), array("id" => $tar["id"]));
+                }
+                break;
+            }
+        }
+        return count($tars);
+    }
     public function setSessaoErro(){
         $this->start_session();
         $_SESSION["errors"] = json_encode($this->errors);

@@ -135,9 +135,16 @@ class TarefasController extends AppController
         $tarefa = $this->request->getData('tarefa');
         if (!empty($tarefa)){
             $res = $this->connection->newQuery()
-            ->select("*")
+            ->select("tipos_alteracao.prazo")
             ->from("alteracoes")
-            ->where("status = 1")
+            ->join(
+                [
+                    "table" => "tipos_alteracao",
+                    "type" => "LEFT",
+                    "conditions" => "tipos_alteracao.id = tipo_alteracao_id"
+                ]
+            )
+            ->where("status = 1 or status = 2")
             ->execute()
             ->fetchAll("assoc");
 
@@ -215,6 +222,10 @@ class TarefasController extends AppController
                     "ocorrencias" => $tarefa["ocorrencias"],
                     "status" => $tarefa["status"]
                 );
+                $this->altTarefaStatus($tarefaOld, $arrayTarefa);
+
+                $this->connection->update("alteracoes", $arrayTarefa, array("id"=>$id));
+                $this->redireciona("tarefas");
             }
             else{
                 $this->set('tarefa', $tarefaOld);

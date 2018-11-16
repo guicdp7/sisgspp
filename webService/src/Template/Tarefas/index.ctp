@@ -21,7 +21,7 @@
                         </thead>
                         <tbody>
                             <?php if (count($tarefas)) : foreach ($tarefas as $tarefa) : $data = date_create($tarefa['dt_cadastro']); ?>
-                            <tr><?php $arrayStatus = array("Cancelada", "Pendente", "Em Desenvolvimento", "Cancelada"); ?>
+                            <tr><?php $arrayStatus = array("Cancelada", "Pendente", "Em Desenvolvimento", "Concluida"); ?>
                                 <td><?= date_format($data, 'd/m/Y') ?><br/><?= date_format($data, 'H:i') ?></td>
                                 <td><?= $tarefa['descricao'] ?></td>
                                 <td><?= $arrayStatus[$tarefa["status"]] ?></td>
