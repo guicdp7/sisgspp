@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src *; media-src *">
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.css">
+    <link href="css/css.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <title>SISGSPP</title>
+    <script type="text/javascript" src="scripts/jquery-3.3.1.slim.min.js"></script>
+    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <header class="bg-cinza-claro">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-branco py-3 pl-4">
+                    <h2 class="titulo font-medium">Fazer Login</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="bg-branco mt-5">
+        <form class="container" id="formLogin">
+            <div class="row">
+                <div class="form-group col-12">
+                    <input name="username" type="email" class="form-control input-login" id="tbEmail" aria-describedby="emailHelp" placeholder="Nome de usuário ou Email">
+                </div>
+                <div class="form-group col-12">
+                    <input name="senha" type="password" class="form-control input-login" id="tbSenha" placeholder="Senha">
+                </div>
+                <button type="submit" class="btn btn-form-login mx-3 mt-4 text-branco font-medium py-2">Entrar</button>
+            </div>
+        </form>
+    </main>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script type="text/javascript" src="scripts/global.js"></script>
+    <script type="text/javascript" src="scripts/index.js"></script>
+</body>
+</html>

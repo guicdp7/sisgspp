@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>LAPTOP-SLEH3LDQ</Machine>
+    <WindowsUser>guilh</WindowsUser>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetOsVersion>10.0</TargetOsVersion>
+    <TargetOsDescription>Windows 10.0</TargetOsDescription>
+    <SolutionConfiguration>debug|x64</SolutionConfiguration>
+    <PackageArchitecture>x64</PackageArchitecture>
+    <PackageIdentityName>8af9bb20-e9fd-11e8-8c47-8bcaa56ef12e</PackageIdentityName>
+    <PackageIdentityPublisher>CN=Apache Cordova Team</PackageIdentityPublisher>
+    <IntermediateOutputPath>C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\build\windows\bld\</IntermediateOutputPath>
+    <RemoteDeploymentType>
+    </RemoteDeploymentType>
+    <PackageRegistrationPath>
+    </PackageRegistrationPath>
+    <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
+    <DeployOptionalPackages>false</DeployOptionalPackages>
+    <WindowsSdkPath>
+    </WindowsSdkPath>
+    <LayoutDir>C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\build\windows\debug\x64\win10\AppX</LayoutDir>
+    <RegisteredManifestChecksum>B1718D2DAB875FE6624314411F18E92F503CFFD0ACF61A3B55D55071D1435524</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>com.sisgspp.app_1.0.0.0_x64__h35559jr9hy9m</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>com.sisgspp.app_h35559jr9hy9m!com.sisgspp.app</RegisteredUserModeAppID>
+    <RegisteredPackageID>com.sisgspp.app</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=Apache Cordova Team</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+    <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\build\windows\debug\x64\win10\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2018-11-17T00:15:16.957</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\images\SplashScreen.scale-100.png">
+      <PackagePath>images\SplashScreen.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2018-11-17T00:13:10.841</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\images\Square150x150Logo.scale-100.png">
+      <PackagePath>images\Square150x150Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2018-11-17T00:13:10.892</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\images\Square30x30Logo.scale-100.png">
+      <PackagePath>images\Square30x30Logo.scale-100.png</PackagePath>
+      <Modified>2018-11-17T00:13:10.938</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\images\Square310x310Logo.scale-100.png">
+      <PackagePath>images\Square310x310Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2018-11-17T00:13:10.958</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\images\Square44x44Logo.scale-100.png">
+      <PackagePath>images\Square44x44Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2018-11-17T00:13:10.975</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\images\Square70x70Logo.scale-100.png">
+      <PackagePath>images\Square70x70Logo.scale-100.png</PackagePath>
+      <Modified>2018-11-17T00:13:10.992</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\images\Square71x71Logo.scale-100.png">
+      <PackagePath>images\Square71x71Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2018-11-17T00:13:10.997</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\images\StoreLogo.scale-100.png">
+      <PackagePath>images\StoreLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2018-11-17T00:13:11.005</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\images\Wide310x150Logo.scale-100.png">
+      <PackagePath>images\Wide310x150Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2018-11-17T00:13:11.036</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\images\user-icon.png">
+      <PackagePath>www\images\user-icon.png</PackagePath>
+      <Modified>2018-11-17T00:13:10.488</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\cordova-js-src\confighelper.js">
+      <PackagePath>www\cordova-js-src\confighelper.js</PackagePath>
+      <Modified>2018-11-17T00:15:10.268</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\cordova-js-src\exec.js">
+      <PackagePath>www\cordova-js-src\exec.js</PackagePath>
+      <Modified>2018-11-17T00:15:10.270</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\cordova-js-src\platform.js">
+      <PackagePath>www\cordova-js-src\platform.js</PackagePath>
+      <Modified>2018-11-17T00:15:10.271</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\cordova-js-src\splashscreen.js">
+      <PackagePath>www\cordova-js-src\splashscreen.js</PackagePath>
+      <Modified>2018-11-17T00:15:10.303</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\cordova.js">
+      <PackagePath>www\cordova.js</PackagePath>
+      <Modified>2018-11-17T00:13:08.982</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\cordova_plugins.js">
+      <PackagePath>www\cordova_plugins.js</PackagePath>
+      <Modified>2018-11-17T00:15:10.305</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\plugins\cordova-plugin-dialogs\src\windows\NotificationProxy.js">
+      <PackagePath>www\plugins\cordova-plugin-dialogs\src\windows\NotificationProxy.js</PackagePath>
+      <Modified>2018-11-17T00:15:10.371</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\plugins\cordova-plugin-dialogs\www\notification.js">
+      <PackagePath>www\plugins\cordova-plugin-dialogs\www\notification.js</PackagePath>
+      <Modified>2018-11-17T00:15:10.373</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\plugins\cordova-plugin-network-information\src\windows\NetworkInfoProxy.js">
+      <PackagePath>www\plugins\cordova-plugin-network-information\src\windows\NetworkInfoProxy.js</PackagePath>
+      <Modified>2018-11-17T00:15:10.375</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\plugins\cordova-plugin-network-information\www\Connection.js">
+      <PackagePath>www\plugins\cordova-plugin-network-information\www\Connection.js</PackagePath>
+      <Modified>2018-11-17T00:15:10.378</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\plugins\cordova-plugin-network-information\www\network.js">
+      <PackagePath>www\plugins\cordova-plugin-network-information\www\network.js</PackagePath>
+      <Modified>2018-11-17T00:15:10.380</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\plugins\cordova-plugin-splashscreen\www\splashscreen.js">
+      <PackagePath>www\plugins\cordova-plugin-splashscreen\www\splashscreen.js</PackagePath>
+      <Modified>2018-11-17T00:15:10.381</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\plugins\cordova-plugin-splashscreen\www\windows\SplashScreenProxy.js">
+      <PackagePath>www\plugins\cordova-plugin-splashscreen\www\windows\SplashScreenProxy.js</PackagePath>
+      <Modified>2018-11-17T00:15:10.384</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\scripts\bootstrap.min.js">
+      <PackagePath>www\scripts\bootstrap.min.js</PackagePath>
+      <Modified>2018-11-17T00:15:10.439</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\scripts\global.js">
+      <PackagePath>www\scripts\global.js</PackagePath>
+      <Modified>2018-11-17T00:13:10.636</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\scripts\index.js">
+      <PackagePath>www\scripts\index.js</PackagePath>
+      <Modified>2018-11-17T00:13:10.652</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\scripts\jquery-3.3.1.slim.min.js">
+      <PackagePath>www\scripts\jquery-3.3.1.slim.min.js</PackagePath>
+      <Modified>2018-11-17T00:15:10.504</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\scripts\main.js">
+      <PackagePath>www\scripts\main.js</PackagePath>
+      <Modified>2018-11-17T00:15:10.506</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\scripts\platformOverrides.js">
+      <PackagePath>www\scripts\platformOverrides.js</PackagePath>
+      <Modified>2018-11-17T00:13:10.710</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\scripts\winstore-jscompat.js">
+      <PackagePath>www\scripts\winstore-jscompat.js</PackagePath>
+      <Modified>2018-11-17T00:13:10.713</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\WinJS\js\base.js">
+      <PackagePath>www\WinJS\js\base.js</PackagePath>
+      <Modified>2018-11-17T00:13:08.876</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\css\all.css">
+      <PackagePath>www\css\all.css</PackagePath>
+      <Modified>2018-11-17T00:15:10.314</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\css\bootstrap.min.css">
+      <PackagePath>www\css\bootstrap.min.css</PackagePath>
+      <Modified>2018-11-17T00:15:10.324</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\css\css.css">
+      <PackagePath>www\css\css.css</PackagePath>
+      <Modified>2018-11-17T00:15:10.333</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\css\main.css">
+      <PackagePath>www\css\main.css</PackagePath>
+      <Modified>2018-11-17T00:15:10.335</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\css\notification.css">
+      <PackagePath>www\css\notification.css</PackagePath>
+      <Modified>2018-11-17T00:15:10.336</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\css\splashscreen.css">
+      <PackagePath>www\css\splashscreen.css</PackagePath>
+      <Modified>2018-11-17T00:13:10.461</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\index.html">
+      <PackagePath>www\index.html</PackagePath>
+      <Modified>2018-11-17T00:15:10.060</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\config.xml">
+      <PackagePath>config.xml</PackagePath>
+      <Modified>2018-11-17T00:15:09.990</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\build\windows\debug\x64\win10\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2018-11-17T00:15:16.766</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>
