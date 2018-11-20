@@ -45,45 +45,43 @@
     <a href="#">Sair</a>
   </div>
   
-  <main class="main-home">
+  <main class="main-home main-projetos">
 
-    <div class="box-up bg-azul-escuro"></div>
-    <div class="foto-user-div">
-      <div class="foto-user"></div>
-    </div>
-    <div class="desc-user my-5">
-      <span class="text-center d-block text-cinza-escuro">Fulano da Silva</span>
-      <span class="text-center d-block text-azul-escuro">Gerente de Vendas</span>
-    </div>
+    <form class="p-2">
+      <div class="form-group">
+        <label for="tituloDemanda">Titulo solicitação</label>
+        <input type="text" class="form-control input-login" id="tituloDemanda" aria-describedby="tituloDemanda">
+      </div>
+      <div class="form-group">
+        <label for="tituloDemanda">Subtitulo solicitação</label>
+        <input type="text" class="form-control input-login" id="subtituloDemanda" aria-describedby="tituloDemanda">
+      </div>
+      <div class="form-group">
+        <label for="selectProjeto">Selecione o projeto:</label>
+        <select class="form-control input-login" id="exampleFormControlSelect1">
+          <option>projeto A</option>
+          <option>projeto B</option>
+          <option>projeto C</option>
 
-    <div class="box-down p-2 mb-2">
-      <div class="box-down-header bg-verde py-3 px-3 d-flex justify-content-start">
-        <div class="flag mr-2"></div>
-        <div class="d-flex flex-column">
-          <span class="text-cinza-escuro d-block">Demanda</span>
-          <span class="text-cinza-escuro d-block">Subtítulo Demanda</span>
-        </div>
+        </select>
       </div>
-      <div class="box-down-content bg-azul-escuro pl-3 pr-5 pt-3">
-        <p class="text-ice">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, magni! Autem maiores cupiditate fugit explicabo non porro sed eos impedit ullam.</p>
-        <p class="text-cinza-claro">Data da entrega: <span>xx/xx/xxxx</span></p>
+      <div class="form-group">
+        <label for="tituloDemanda">Descrição</label>
+        <textarea class="form-control input-textarea" id="descricao" aria-describedby="tituloDemanda" rows="5"></textarea>
       </div>
-    </div>
+      <div class="form-group">
+        <label for="tituloDemanda">Data entrega</label>
+        <input class="form-control input-login" id="date" type="date">
+      </div>
+
+      <button type="submit" class="btn btn-form-login mt-4 text-branco font-medium py-2">Cadastrar solicitação</button>
+    </form>
 
 
-    <div class="box-down p-2 mb-2">
-      <div class="box-down-header bg-verde py-3 px-3 d-flex justify-content-start">
-        <div class="flag mr-2"></div>
-        <div class="d-flex flex-column">
-          <span class="text-cinza-escuro d-block">Demanda</span>
-          <span class="text-cinza-escuro d-block">Subtítulo Demanda</span>
-        </div>
-      </div>
-      <div class="box-down-content bg-azul-escuro pl-3 pr-5 pt-3">
-        <p class="text-ice">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, magni! Autem maiores cupiditate fugit explicabo non porro sed eos impedit ullam.</p>
-        <p class="text-cinza-claro">Data da entrega: <span>xx/xx/xxxx</span></p>
-      </div>
-    </div>
+
+
+
+
 
   </main>
   

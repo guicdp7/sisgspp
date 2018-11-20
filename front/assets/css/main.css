@@ -73,6 +73,13 @@ body {
     opacity: .5;
     font-size: 14px; }
 
+.input-textarea {
+  outline: none !important;
+  box-shadow: none !important;
+  border: 2px solid #353f4f !important; }
+  .input-textarea:focus {
+    border: 2px solid #65cea7 !important; }
+
 .btn-form-login {
   background-color: #7A7676;
   width: 100%;
@@ -169,6 +176,9 @@ body {
     font-weight: 300;
     font-size: 14px;
     letter-spacing: 1.5px; }
+
+.main-projetos {
+  padding-top: 120px; }
 
 .box-down .box-down-header .flag {
   width: 50px;

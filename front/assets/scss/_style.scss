@@ -22,6 +22,15 @@ body {
   }
 }
 
+.input-textarea {
+  outline: none !important;
+  box-shadow: none !important;
+  border: 2px solid $cinza-escuro !important;
+  &:focus {
+    border: 2px solid $verde !important;
+  }
+}
+
 .btn-form-login {
   background-color: $cinza-claro;
   width: 100%;
@@ -112,7 +121,6 @@ body {
     position: absolute;
     top: 35vh;
     left: 50%;
-    
   }
   .foto-user {
     width: 100px;
@@ -140,6 +148,10 @@ body {
       letter-spacing: 1.5px;
     }
   }
+}
+
+.main-projetos {
+  padding-top: 120px;
 }
 
 .box-down {
