@@ -4,11 +4,19 @@
     document.addEventListener( 'deviceready', onDeviceReady.bind( this ), false );
 
     function onDeviceReady() {
-        // Manipular eventos de pausa e retomada do Cordova
-        document.addEventListener( 'pause', onPause.bind( this ), false );
-        document.addEventListener( 'resume', onResume.bind( this ), false );
+        if (!thisUser) {
+            // Manipular eventos de pausa e retomada do Cordova
+            document.addEventListener('pause', onPause.bind(this), false);
+            document.addEventListener('resume', onResume.bind(this), false);
+            document.addEventListener("backbutton", onBackButtonClick, false);
 
-        formLogin.addEventListener("submit", formLoginSubmit, false);
+            formLogin.addEventListener("submit", formLoginSubmit, false);
+
+            _AoIniciar();
+        }
+        else {
+            location.href = "inicio.html";
+        }
     };
 
     function onPause() {
@@ -23,17 +31,22 @@
     function formLoginSubmit(e) {
         e.preventDefault();
 
+        Loader.add(btSubmit);
         var api = new Api("login", {
             "username": this.username.value,
             "senha": this.senha.value
-        });
+        }, false);
         api.send(function (res) {
             if (res.error) {
-                Erro(res);
+                var msg = new Mensagem("Verifique os dados informados e tente novamente.");
+                msg.setTitulo("Não foi possível fazer login!");
+                msg.mostrar();
             }
             else {
-                var msg = new Mensagem(JSON.stringify(res), true);
+                setLogin(res);
+                location.href = "inicio.html";
             }
+            Loader.remove(btSubmit);
         });
     }
 } )();

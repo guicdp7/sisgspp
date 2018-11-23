@@ -59,6 +59,12 @@
       <PackagePath>images\Wide310x150Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\images\logo1.png">
+      <PackagePath>www\images\logo1.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\images\logo2.png">
+      <PackagePath>www\images\logo2.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\images\user-icon.png">
       <PackagePath>www\images\user-icon.png</PackagePath>
     </AppxPackagedFile>
@@ -110,8 +116,8 @@
     <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\scripts\index.js">
       <PackagePath>www\scripts\index.js</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\scripts\jquery-3.3.1.slim.min.js">
-      <PackagePath>www\scripts\jquery-3.3.1.slim.min.js</PackagePath>
+    <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\scripts\jquery-3.3.1.min.js">
+      <PackagePath>www\scripts\jquery-3.3.1.min.js</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\guilh\Documents\GitHub\sisgspp\App\platforms\windows\www\scripts\main.js">
       <PackagePath>www\scripts\main.js</PackagePath>

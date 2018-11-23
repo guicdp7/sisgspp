@@ -274,7 +274,7 @@ function setValByClass(classe, valor) {
     }
 };
 function setLogin(data) {
-    var jsonLogin = data;
+    var vg = new VarGlobal('thisUser'), jsonLogin = data;
     vg.salvarLocal(JSON.stringify(jsonLogin));
     thisUser = jsonLogin;
 };
@@ -405,9 +405,9 @@ var Loader = {
         }
     },
     'onCancelar': function (evento) {
-        var btNovo = btLoaderCancelar.cloneNode(true);
+        /*var btNovo = btLoaderCancelar.cloneNode(true);
         btLoaderCancelar.parentNode.replaceChild(btNovo, btLoaderCancelar);
-        btLoaderCancelar.addEventListener('click', evento, false);
+        btLoaderCancelar.addEventListener('click', evento, false);*/
     }
 };
 function Mensagem(texto, auto) {
@@ -491,7 +491,7 @@ function VarGlobal(chave) {
 /*Eventos Globais*/
 function onBackButtonClick() {
     var voltar = function () {
-        if (Pagina == 'index.html' || Pagina == 'home.html') {
+        if (Pagina == 'index.html' || Pagina == 'inicio.html') {
             var msg = new Mensagem("Fechar SISGSPP?");
             msg.setTitulo("Você deseja sair?");
             msg.setBotoes(["Sim", "Não"]);
