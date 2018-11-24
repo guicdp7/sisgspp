@@ -10,6 +10,7 @@
             document.addEventListener('resume', onResume.bind(this), false);
             document.addEventListener("backbutton", onBackButtonClick, false);
 
+            var formLogin = document.getElementById("formLogin");
             formLogin.addEventListener("submit", formLoginSubmit, false);
 
             _AoIniciar();

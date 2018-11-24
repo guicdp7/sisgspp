@@ -17,10 +17,17 @@ class ProjetosController extends AppController
         $this->set('thisUser', $this->user);
     }
     public function index(){
+        $pessoa_id = $this->request->getData("pessoa_id");
+
         $projetosObj = $this->connection->newQuery()
         ->select("*")
-        ->from("projetos")
-        ->execute()
+        ->from("projetos");
+
+        if(!empty($pessoa_id)){
+            $projetosObj = $projetosObj->where("empresa_id = ".$pessoa_id);
+        }
+
+        $projetosObj = $projetosObj->execute()
         ->fetchAll("assoc");
         
         foreach($projetosObj as $key => $proObj){
