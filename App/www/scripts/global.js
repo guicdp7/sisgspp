@@ -161,7 +161,7 @@ function formataData(data, isHoras) {
             return "0" + n;
         }
         return n;
-    }, dt = new Date(data);
+    }, dt = new Date(data.replace(/\s/, 'T'));
     var dia = cNum(dt.getDate()),
         mes = cNum(dt.getMonth() + 1);
 
@@ -395,13 +395,13 @@ var Loader = {
     'mostrar': function () {
         var divLoader = document.getElementById('divLoader');
         if (divLoader) {
-            $(divLoader).removeClass('d-none');
+            $(divLoader).fadeIn("fast");
         }
     },
     'remover': function () {
         var divLoader = document.getElementById('divLoader');
         if (divLoader) {
-            $(divLoader).addClass('d-none');
+            $(divLoader).fadeOut("fast");
         }
     },
     'onCancelar': function (evento) {
@@ -491,7 +491,10 @@ function VarGlobal(chave) {
 /*Eventos Globais*/
 function onBackButtonClick() {
     var voltar = function () {
-        if (Pagina == 'index.html' || Pagina == 'inicio.html') {
+        if (menuIsAtivo) {
+            closeSlideMenu();
+        }
+        else if (Pagina == 'index.html' || Pagina == 'inicio.html') {
             var msg = new Mensagem("Fechar SISGSPP?");
             msg.setTitulo("Você deseja sair?");
             msg.setBotoes(["Sim", "Não"]);

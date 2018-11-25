@@ -18,14 +18,26 @@ class TarefasController extends AppController
     }
     public function index(){
         $id = $this->request->getQuery("id");
+        $pessoa_id = $this->request->getData("pessoa_id");
+        $projeto_id = $this->request->getData("projeto_id");
+
+        $condicao = array();
+        
+        if (!empty($id)){
+            $condicao["id"] = $id;
+        }
+        if (!empty($pessoa_id)){
+            $condicao["pessoa_id"] = $pessoa_id;
+        }
+        if (!empty($projeto_id)){
+            $condicao["projeto_id"] = $projeto_id;
+        }
         
         $tarefasObj = $this->connection->newQuery()
         ->select("*")
-        ->from("alteracoes");
-        if (!empty($id)){
-            $tarefasObj = $tarefasObj->where("id = " . $id);
-        }
-        $tarefasObj = $tarefasObj->execute()
+        ->from("alteracoes")
+        ->where($condicao)
+        ->execute()
         ->fetchAll("assoc");
 
         foreach ($tarefasObj as $key => $tar){

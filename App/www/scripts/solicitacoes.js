@@ -1,6 +1,6 @@
 ﻿(function () {
     "use strict";
-    var uNome, uSnome, uTipo, uPid, uEmail;
+    var uNome, uSnome, uTipo, uPid, pId, pNome, projetos = [];
 
     document.addEventListener('deviceready', onDeviceReady.bind(this), false);
 
@@ -16,14 +16,12 @@
                 uSnome = thisUser[0].sobrenome;
                 uTipo = thisUser[0].tipo;
                 uPid = thisUser[0].pessoa_id;
-                uEmail = thisUser[0].email;
 
-                var txUserName = document.getElementById("txUserName"),
-                    txEmail = document.getElementById("txEmail"),
-                    txMenuUName = document.getElementById("txMenuUName");
-                txUserName.innerHTML = uTipo == "J" ? uSnome : uNome + " " + uSnome;
-                txMenuUName.innerHTML = txUserName.innerHTML;
-                txEmail.innerHTML = uEmail;
+                pId = getUrlParameter("projeto_id");
+                pNome = getUrlParameter("projeto_nome");
+
+                var txMenuUName = document.getElementById("txMenuUName");
+                txMenuUName.innerHTML = uTipo == "J" ? uSnome : uNome + " " + uSnome;
 
                 swipedetect(document.body, function (dir) {
                     if (dir == "d" || dir == "e") {
@@ -36,7 +34,23 @@
                     }
                 });
 
-                getProjetos();
+                if (pId) {
+                    getSolicitacoes(pId, pNome, function () { });
+                }
+                else {
+                    getProjetos(function () {
+                        var i = 0;
+                        var gs = function () {
+                            if (i < projetos.length) {
+                                getSolicitacoes(projetos[i].id, projetos[i].nome, function () {
+                                    i++;
+                                    gs();
+                                });
+                            }
+                        };
+                        gs();
+                    });
+                }
 
                 _AoIniciar();
             });
@@ -54,7 +68,7 @@
         // TODO: este aplicativo foi reativado. Restaure o estado do aplicativo aqui.
     };
 
-    function getProjetos() {
+    function getProjetos(retorno) {
         var api = new Api("projetos", { "pessoa_id": uPid }),
             divProjetos = document.getElementById("divProjetos");
         api.send(function (res) {
@@ -62,19 +76,44 @@
                 Erro(res);
             }
             else {
-                limpaObj(divProjetos);
+                limpaObj(divSolicitacoes);
                 if (res.length > 0) {
-                    for (var i in res) {
-                        divProjetos.appendChild(geraProjeto(res[i]));
-                    }
+                    projetos = res;
+                    retorno();
                 }
                 else {
-                    divProjetos.appendChild(CriaObj("h3", { conteudo: "Você ainda não possui projetos..." }));
+                    divSolicitacoes.appendChild(CriaObj("h3", { conteudo: "Você ainda não possui projetos..." }));
                 }
             }
         });
     };
-    function geraProjeto(dds) {
+    function getSolicitacoes(pId, pNome, retorno) {
+        var api = new Api("tarefas", { "pessoa_id": uPid, "projeto_id": pId }),
+            divSolicitacoes = document.getElementById("divSolicitacoes");
+        api.send(function (res) {
+            if (res.error) {
+                Erro(res);
+            }
+            else {
+                divSolicitacoes.appendChild(CriaObj("h2", {
+                    conteudo: pNome
+                }));
+                if (res.length > 0) {
+                    for (var i in res) {
+                        divSolicitacoes.appendChild(geraSolicitacoes(res[i]));
+                    }
+                }
+                else {
+                    divSolicitacoes.appendChild(CriaObj("h4", {
+                        classe: "box-down p-2 mb-2",
+                        conteudo: "Esse projeto ainda não possui solicitações..."
+                    }));
+                }
+                retorno();
+            }
+        });
+    };
+    function geraSolicitacoes(dds) {
         var divBox = CriaObj("div", {
             classe: "box-down p-2 mb-2"
         }), divHead = CriaObj("div", {
@@ -88,18 +127,18 @@
             conteudo: dds.nome
         }), divSTit = CriaObj("div", {
             classe: "text-cinza-escuro d-block",
-            conteudo: "Solicitações >"
+            conteudo: formataData(dds.dt_cadastro, true)
+        }), divCont = CriaObj("div", {
+            classe: "box-down-content bg-azul-escuro pl-3 pr-5 pt-3",
+            conteudo: dds.descricao
         });
-
-        divBox.addEventListener("click", function () {
-            location.href = "minhas-solicitacoes.html?projeto_id=" + dds.id + "&projeto_nome=" + dds.nome;
-        }, false);
 
         divDesc.appendChild(divTit);
         divDesc.appendChild(divSTit);
         divHead.appendChild(divFlag);
         divHead.appendChild(divDesc);
         divBox.appendChild(divHead);
+        divBox.appendChild(divCont);
 
         return divBox;
     };
