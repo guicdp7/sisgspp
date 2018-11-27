@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src * 'unsafe-inline'; media-src *">
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.css">
+    <link href="css/css.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Nova Solicitação - SISGSPP</title>
+    <script type="text/javascript" src="scripts/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="scripts/main.js"></script>
+</head>
+<body>
+    <header include-html="partes/header.html"></header>
+    <aside include-html="partes/menu.html"></aside>
+    <main class="main-home main-projetos">
+        <form id="formSolicita" class="p-2">
+            <div class="form-group">
+                <label for="seProjetos">Selecione o Projeto:</label>
+                <select id="seProjetos" name="projeto" class="form-control input-login"></select>
+            </div>
+            <div class="form-group">
+                <label for="seTipos">Selecione o Tipo de Solicitação:</label>
+                <select id="seTipos" name="tipo" class="form-control input-login"></select>
+            </div>
+            <div class="form-group">
+                <label for="tituloDemanda">Descrição</label>
+                <textarea name="descricao" class="form-control input-textarea" id="descricao" aria-describedby="tituloDemanda" rows="5"></textarea>
+            </div>
+            <button id="btSubmit" type="submit" class="btn btn-form-login mt-4 text-branco font-medium py-2">Enviar Solicitação</button>
+        </form>
+    </main>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script type="text/javascript" src="scripts/global.js"></script>
+    <script type="text/javascript" src="scripts/novas-solicitacoes.js"></script>
+</body>
+</html>

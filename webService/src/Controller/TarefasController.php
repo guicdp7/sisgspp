@@ -91,6 +91,11 @@ class TarefasController extends AppController
 
         if (empty($a) || $a == "visualizacao"){
             $a = "visualizacao";
+            
+            if ($this->retorno == 'json'){
+                echo json_encode($res);
+                exit;
+            }
         }
         else if ($a == "novo"){
             if (!empty($tipo)){
@@ -175,12 +180,15 @@ class TarefasController extends AppController
 
             $prazo += $res[0]["prazo"];
 
+            $ocorr = isset($tarefa["ocorrencias"]) ? $tarefa["ocorrencias"] : null;
+            $pessoa_id = isset($tarefa["pessoa_id"]) ? $tarefa["pessoa_id"] : $this->user[0]["pessoa_id"];
+
             $arrayTarefa = array(
-                "pessoa_id" => $this->user[0]["pessoa_id"],
+                "pessoa_id" => $pessoa_id,
                 "projeto_id" => $tarefa["projeto_id"],
                 "tipo_alteracao_id" => $tarefa["tipo_id"],
                 "descricao" => $tarefa["descricao"],
-                "ocorrencias" => $tarefa["ocorrencias"],
+                "ocorrencias" => $ocorr,
                 "prazo" => $prazo,
                 "status" => 1,
                 "ip_cadastro" => $this->userIP()

@@ -99,6 +99,7 @@
                     conteudo: pNome
                 }));
                 if (res.length > 0) {
+                    res.reverse();
                     for (var i in res) {
                         divSolicitacoes.appendChild(geraSolicitacoes(res[i]));
                     }
@@ -114,6 +115,7 @@
         });
     };
     function geraSolicitacoes(dds) {
+        var arrayStatus = ["Cancelada", "Pendente", "Em Desenvolvimento", "Concluida"];
         var divBox = CriaObj("div", {
             classe: "box-down p-2 mb-2"
         }), divHead = CriaObj("div", {
@@ -124,15 +126,21 @@
             classe: "d-flex flex-column"
         }), divTit = CriaObj("div", {
             classe: "text-cinza-escuro d-block",
-            conteudo: dds.nome
+            conteudo: dds.tipo.nome + " (" + arrayStatus[dds.status] + ")"
         }), divSTit = CriaObj("div", {
             classe: "text-cinza-escuro d-block",
             conteudo: formataData(dds.dt_cadastro, true)
         }), divCont = CriaObj("div", {
-            classe: "box-down-content bg-azul-escuro pl-3 pr-5 pt-3",
+            classe: "box-down-content bg-azul-escuro pl-3 pr-5 pt-3"
+        }), pDescricao = CriaObj("p", {
+            classe: "text-ice",
             conteudo: dds.descricao
+        }), pEntrega = CriaObj("p", {
+            classe: "text-cinza-claro",
+            conteudo: "Prazo: " + dds.prazo + (dds.prazo > 1 ? " dias" : " dia")
         });
-
+        divCont.appendChild(pDescricao);
+        divCont.appendChild(pEntrega);
         divDesc.appendChild(divTit);
         divDesc.appendChild(divSTit);
         divHead.appendChild(divFlag);
