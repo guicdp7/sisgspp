@@ -491,10 +491,7 @@ function VarGlobal(chave) {
 /*Eventos Globais*/
 function onBackButtonClick() {
     var voltar = function () {
-        if (menuIsAtivo) {
-            closeSlideMenu();
-        }
-        else if (Pagina == 'index.html' || Pagina == 'inicio.html') {
+        if (Pagina == 'index.html' || Pagina == 'inicio.html') {
             var msg = new Mensagem("Fechar SISGSPP?");
             msg.setTitulo("Você deseja sair?");
             msg.setBotoes(["Sim", "Não"]);
@@ -509,7 +506,19 @@ function onBackButtonClick() {
             window.history.go(-1);
         }
     };
-    voltar();
+    var sideMenu = document.getElementById("side-menu");
+    if (sideMenu) {
+        if (menuIsAtivo) {
+            closeSlideMenu();
+        }
+        else {
+            voltar();
+        }
+    }
+    else {
+        voltar();
+    }
+
 };
 function onInputBlur() {
     if (this) {
